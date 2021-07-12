@@ -10,9 +10,9 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   public getCustomer(): Observable<any> {
-
     const data = 'assets/mock/customer-data.json';
     return this.http.get(data);
+
   }
 
 }

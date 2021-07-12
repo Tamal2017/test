@@ -4,15 +4,22 @@ import { CustomerItemsComponent } from './customer-items/customer-items.componen
 import { CustomerOrderComponent } from './customer-order/customer-order.component';
 
 import { CustomerComponent } from './customer.component';
+import { CustomerResolverService } from './services/customer-resolver';
 
 const routes: Routes = [
   { path: '', component: CustomerComponent },
-  { path: 'items', component: CustomerItemsComponent },
+  {
+    path: 'items', component: CustomerItemsComponent,
+    resolve: {
+      list: CustomerResolverService
+    }
+  },
   { path: 'order', component: CustomerOrderComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [CustomerResolverService]
 })
 export class CustomerRoutingModule { }
